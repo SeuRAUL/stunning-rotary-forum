@@ -2,10 +2,12 @@
   <div class="message-show">
     <h2><%= @message.head %></h2>
     <p class="message-posted-by"><%= time_ago_in_words(@message.created_at) %> ago.</p>
-    <p class="message-body"><%= @message.body %></p>
+    <p class="message-body"><%= simple_format @message.body %></p>
 
     <div class="links btn-group">
       <%= link_to "Back", root_path, class: 'btn btn-default' %>
+      <%= link_to "Edit", edit_message_path(@message), class: 'btn btn-primary' %>
+      <%= link_to "delete", message_path(@message), data: { turbo_method: :delete, turbo_confirm: 'Really destroy this?' }, class: 'btn btn-danger' %>
     </div>
   </div>
 </div>

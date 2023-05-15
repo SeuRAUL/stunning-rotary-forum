@@ -1,11 +1,12 @@
-<% @messages.each do |message| %>
-  <div class="col-md-10 col-md-offset-1">
-    <div class="message">
-      <h2 class="message-head"><%= message.head %></h2>
-      <%= link_to 'Join Conversation', message, class: 'btn btn-default' %>
+<% if @messages.any? %>
+  <% @messages.each do |message| %>
+    <div class="col-md-10 col-md-offset-1">
+      <div class="message">
+        <h2 class="message-head"><%= message.head %></h2>
+        <%= link_to 'Join Conversation', message, class: 'btn btn-default' %>
+      </div>
     </div>
-  </div>
-
+  <% end %>
 <% end %>
 
 </br>
