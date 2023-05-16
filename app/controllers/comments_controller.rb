@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :message, only: [:create, :edit, :update, :destroy]
   before_action :comment, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
 
   def create
     @comment = @message.comments.create(comment_params)

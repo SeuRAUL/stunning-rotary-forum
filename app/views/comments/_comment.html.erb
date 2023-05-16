@@ -1,14 +1,18 @@
 <div class="comment">
   <div class="row">
     <div class="col-md-10">
-      <p class="comment-content"><%= comment.content %></p>
+      <p class="comment-content"><%= simple_format comment.content %></p>
       <p class="comment-posted-by">By: <%= comment.user.email %> <%= time_ago_in_words(comment.created_at) %> ago</p>
     </div>
     <div class="col-md-2">
       <div class="links btn-group">
-        <% if comment.user_id == current_user.id %>
-          <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_message_comment_path(comment.message, comment), class: 'btn btn-info btn-sm' %>
-          <%= link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, message_comment_path(comment.message, comment), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %>
+        <% if user_signed_in? %>
+          <% if comment.user_id == current_user.id %>
+            <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_message_comment_path(comment.message, comment), class: 'btn btn-info btn-sm' %>
+          <% end %>
+          <% if  comment.user_id == current_user.id or @message.user_id == current_user.id %>
+            <%= link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, message_comment_path(comment.message, comment), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %>
+          <% end %>
         <% end %>
       </div>
     </div>
