@@ -5,7 +5,7 @@
       <p class="comment-posted-by">By: <%= comment.user.email %> <%= time_ago_in_words(comment.created_at) %> ago</p>
     </div>
     <div class="col-md-2">
-      <div class="links btn-group">
+      <div class="links btn-group pull-right">
         <% if user_signed_in? %>
           <% if comment.user_id == current_user.id %>
             <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_message_comment_path(comment.message, comment), class: 'btn btn-info btn-sm' %>
@@ -17,5 +17,4 @@
       </div>
     </div>
   </div>
-  <hr>
 </div>

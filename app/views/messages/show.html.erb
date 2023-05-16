@@ -1,7 +1,7 @@
 <div class="col-md-10 col-md-offset-1">
   <div class="message-show">
     <h2><%= @message.head %></h2>
-    <p class="message-posted-by"><%= time_ago_in_words(@message.created_at) %> ago.</p>
+    <p class="message-posted-by"><%= time_ago_in_words(@message.created_at) %> ago by <i><%= @message.user.email %></i></p>
     <p class="message-body"><%= simple_format @message.body %></p>
 
     <div class="links btn-group">
@@ -12,7 +12,7 @@
       <% end %>
     </div>
 
-    <hr>
+    
     <h3 class="comment-section-header">Comments:</h3>
     <p><%= render @message.comments %></p>
 
