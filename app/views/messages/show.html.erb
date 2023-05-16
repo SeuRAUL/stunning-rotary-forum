@@ -6,8 +6,8 @@
 
     <div class="links btn-group">
       <%= link_to "Back", root_path, class: 'btn btn-default' %>
-      <%= link_to "Edit", edit_message_path(@message), class: 'btn btn-primary' %>
-      <%= link_to "delete", message_path(@message), data: { turbo_method: :delete, turbo_confirm: 'Really destroy this?' }, class: 'btn btn-danger' %>
+      <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_message_path(@message), class: 'btn btn-primary' %>
+      <%= link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, message_path(@message), data: { turbo_method: :delete, turbo_confirm: 'Really destroy this?' }, class: 'btn btn-danger' %>
     </div>
 
     <hr>
