@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @message.comments.create(comment_params)
-    @comment.user_id = current_user.user_id
+    @comment.user_id = current_user.id
 
     if @comment.save 
       redirect_to @message 
@@ -23,6 +23,6 @@ class CommentsController < ApplicationController
     end
 
     def comment_params 
-      params.require(:comment).include(:content)
+      params.require(:comment).permit(:content)
     end
 end

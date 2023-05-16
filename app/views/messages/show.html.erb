@@ -9,5 +9,13 @@
       <%= link_to "Edit", edit_message_path(@message), class: 'btn btn-primary' %>
       <%= link_to "delete", message_path(@message), data: { turbo_method: :delete, turbo_confirm: 'Really destroy this?' }, class: 'btn btn-danger' %>
     </div>
+
+    <hr>
+    <h3 class="comment-section-header">Comments:</h3>
+    <p><%= render @message.comments %></p>
+
+    <h4 class="reply-to-msg">Join Discussion:</h4>
+    <%= render 'comments/form' %>
+
   </div>
 </div>
