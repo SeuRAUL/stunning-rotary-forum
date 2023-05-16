@@ -9,11 +9,11 @@ class MessagesController < ApplicationController
   end
 
   def new
-    @message = Message.new
+    @message = current_user.message.build
   end
 
   def create
-    @message = Message.new(message_params)
+    @message = current_user.message.build(message_params)
     if @message.save 
       redirect_to @message
     else
